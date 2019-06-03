@@ -14,7 +14,7 @@ label:before {
   content: "";
   position: absolute;
   left: 55px;
-  top: 0;
+  top: 0.75rem;
   bottom: 0;
   width: 15px;
   color: #979797;
@@ -29,6 +29,7 @@ label:before {
   background-color: #fafafa;
   border-radius: 3px;
   border: solid 1px #dbdbdb;
+  margin-top: 0.75rem;
 }
 
 .icons {
