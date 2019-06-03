@@ -1,7 +1,8 @@
 import React from 'react';
-import { Card, CardImg, CardText, CardBody, CardLink,
-  CardTitle, Input } from 'reactstrap';
+import { Card, CardImg, CardText, CardBody,
+  CardTitle, Input, Img } from 'reactstrap';
 import moment from 'moment';
+import './PostContainer.css';
 
 const PostContainer = ({ post }) => {
 
@@ -19,7 +20,7 @@ const PostContainer = ({ post }) => {
     <div>
       <Card>
         <CardBody>
-          <CardTitle>{post.username}</CardTitle>
+          <CardTitle><img className="thumbnail-image" alt="" srcSet={post.thumbnailUrl}/>&nbsp; {post.username}</CardTitle>
         </CardBody>
         <CardImg top width="100%" src={post.imageUrl} />
         <CardBody>
