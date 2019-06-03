@@ -7,6 +7,7 @@ import {
   CardTitle,
   Input
 } from "reactstrap";
+import pt from 'prop-types';
 import moment from "moment";
 import PostIcons from './PostIcons';
 import CommentSection from "../CommentSection/CommentSection";
@@ -55,5 +56,17 @@ const PostContainer = ({ post }) => {
     </div>
   );
 };
+
+PostContainer.propTypes = {
+  post: pt.shape({
+    id: pt.string.isRequired,
+    username: pt.string.isRequired,
+    thumbnailUrl: pt.string.isRequired,
+    imageUrl: pt.string.isRequired,
+    likes: pt.number.isRequired,
+    timestamp: pt.string.isRequired,
+    comments: pt.arrayOf(pt.object).isRequired,
+  }).isRequired
+}
 
 export default PostContainer;
