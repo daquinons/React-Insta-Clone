@@ -1,8 +1,9 @@
 import React from 'react';
 import pt from 'prop-types';
+import './CommentSection.css';
 
 let Comment = ({ comment }) => {
-  return <p><span className="blue-bold">{comment.username}</span> {comment.text}</p>
+  return <p className="comment-p"><span className="blue-bold">{comment.username}</span> {comment.text}</p>
 }
 
 Comment.propTypes = {
