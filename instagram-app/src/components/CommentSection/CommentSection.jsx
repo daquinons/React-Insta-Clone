@@ -4,13 +4,18 @@ import { Input } from "reactstrap";
 import "./CommentSection.css";
 
 let CommentSection = ({ parentId, comments, timeAgo }) => {
-  const savedItem = JSON.parse(window.localStorage.getItem("comments" + parentId));
+  const savedItem = JSON.parse(
+    window.localStorage.getItem("comments" + parentId)
+  );
   const toInitialize = savedItem ? savedItem : comments;
   const [storedComments, setStoredComments] = useState(toInitialize);
   const [commentFormInput, setCommentFormInput] = useState("");
 
   const saveToStorage = () => {
-    window.localStorage.setItem("comments" + parentId, JSON.stringify(storedComments));
+    window.localStorage.setItem(
+      "comments" + parentId,
+      JSON.stringify(storedComments)
+    );
     console.log(JSON.parse(window.localStorage.getItem("comments" + parentId)));
   };
 
@@ -40,7 +45,7 @@ let CommentSection = ({ parentId, comments, timeAgo }) => {
   useEffect(() => {
     saveToStorage();
   }, [storedComments]);
-  
+
   if (storedComments) {
     return (
       <>
@@ -70,9 +75,8 @@ let CommentSection = ({ parentId, comments, timeAgo }) => {
       </>
     );
   } else {
-    return <div></div>
+    return <div />;
   }
-
 };
 
 export default CommentSection;

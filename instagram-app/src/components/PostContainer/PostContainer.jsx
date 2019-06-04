@@ -1,14 +1,8 @@
 import React, { useState } from "react";
-import {
-  Card,
-  CardImg,
-  CardText,
-  CardBody,
-  CardTitle
-} from "reactstrap";
-import pt from 'prop-types';
+import { Card, CardImg, CardText, CardBody, CardTitle } from "reactstrap";
+import pt from "prop-types";
 import moment from "moment";
-import PostIcons from './PostIcons';
+import PostIcons from "./PostIcons";
 import CommentSection from "../CommentSection/CommentSection";
 import "./PostContainer.css";
 
@@ -23,17 +17,17 @@ const PostContainer = ({ post }) => {
     return diffDateInWeeks;
   };
 
-  const createTimeAgoElement = (timestamp) => {
+  const createTimeAgoElement = timestamp => {
     return (
       <CardText className="date">
         {getDiffDateInWeeks(timestamp)} WEEKS AGO
       </CardText>
-    )
-  }
+    );
+  };
 
   const likePost = () => {
     setLikes(likes + 1);
-  }
+  };
 
   return (
     <div className="card-post">
@@ -52,7 +46,11 @@ const PostContainer = ({ post }) => {
         <CardBody>
           <PostIcons likeHandler={likePost} />
           <CardText className="blue-bold">{likes} likes</CardText>
-          <CommentSection parentId={post.id} comments={post.comments} timeAgo={createTimeAgoElement(post.timestamp)} />
+          <CommentSection
+            parentId={post.id}
+            comments={post.comments}
+            timeAgo={createTimeAgoElement(post.timestamp)}
+          />
         </CardBody>
       </Card>
     </div>
@@ -67,8 +65,8 @@ PostContainer.propTypes = {
     imageUrl: pt.string.isRequired,
     likes: pt.number.isRequired,
     timestamp: pt.string.isRequired,
-    comments: pt.arrayOf(pt.object).isRequired,
+    comments: pt.arrayOf(pt.object).isRequired
   }).isRequired
-}
+};
 
 export default PostContainer;
