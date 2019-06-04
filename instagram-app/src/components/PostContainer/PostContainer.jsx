@@ -4,8 +4,7 @@ import {
   CardImg,
   CardText,
   CardBody,
-  CardTitle,
-  Input
+  CardTitle
 } from "reactstrap";
 import pt from 'prop-types';
 import moment from "moment";
@@ -22,6 +21,14 @@ const PostContainer = ({ post }) => {
 
     return diffDateInWeeks;
   };
+
+  const createTimeAgoElement = (timestamp) => {
+    return (
+      <CardText className="date">
+        {getDiffDateInWeeks(timestamp)} WEEKS AGO
+      </CardText>
+    )
+  }
 
   return (
     <div className="card-post">
@@ -40,17 +47,7 @@ const PostContainer = ({ post }) => {
         <CardBody>
           <PostIcons />
           <CardText className="blue-bold">{post.likes} likes</CardText>
-          <CommentSection comments={post.comments} />
-          <CardText className="date">
-            {getDiffDateInWeeks(post.timestamp)} WEEKS AGO
-          </CardText>
-          <hr />
-          <Input
-            type="text"
-            name="comment"
-            className="comment-form"
-            placeholder="Add a comment..."
-          />
+          <CommentSection comments={post.comments} timeAgo={createTimeAgoElement(post.timestamp)} />
         </CardBody>
       </Card>
     </div>
