@@ -2,7 +2,7 @@ import React from "react";
 import { Row, Col } from "reactstrap";
 import "./SearchBar.css";
 
-const SearchBar = () => {
+const SearchBar = ({ onSearch }) => {
   return (
     <Row className="text-center" id="header">
       <Col className="justify-content-center align-self-center" xs="6" sm="4">
@@ -16,6 +16,7 @@ const SearchBar = () => {
       <Col xs="6" sm="4" className="justify-content-center align-self-center">
         <label>
           <input
+            onChange={onSearch}
             type="text"
             className="text-center"
             name="search"
