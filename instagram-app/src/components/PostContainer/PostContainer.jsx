@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Card,
   CardImg,
@@ -13,6 +13,7 @@ import CommentSection from "../CommentSection/CommentSection";
 import "./PostContainer.css";
 
 const PostContainer = ({ post }) => {
+  const [likes, setLikes] = useState(post.likes);
   const getDiffDateInWeeks = timestamp => {
     const now = moment(new Date());
     const toCompare = moment(timestamp, "MMMM Do YYYY, hh:mm:ss a");
@@ -30,6 +31,10 @@ const PostContainer = ({ post }) => {
     )
   }
 
+  const likePost = () => {
+    setLikes(likes + 1);
+  }
+
   return (
     <div className="card-post">
       <Card>
@@ -45,8 +50,8 @@ const PostContainer = ({ post }) => {
         </CardBody>
         <CardImg top width="100%" src={post.imageUrl} />
         <CardBody>
-          <PostIcons />
-          <CardText className="blue-bold">{post.likes} likes</CardText>
+          <PostIcons likeHandler={likePost} />
+          <CardText className="blue-bold">{likes} likes</CardText>
           <CommentSection comments={post.comments} timeAgo={createTimeAgoElement(post.timestamp)} />
         </CardBody>
       </Card>

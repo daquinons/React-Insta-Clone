@@ -1,9 +1,10 @@
 import React from "react";
 
-let PostIcons = () => {
+let PostIcons = ( { likeHandler } ) => {
   return (
     <div>
       <svg
+        onClick={likeHandler}
         className="post-icon"
         width="48px"
         height="44px"
