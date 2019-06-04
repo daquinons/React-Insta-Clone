@@ -52,7 +52,7 @@ const PostContainer = ({ post }) => {
         <CardBody>
           <PostIcons likeHandler={likePost} />
           <CardText className="blue-bold">{likes} likes</CardText>
-          <CommentSection comments={post.comments} timeAgo={createTimeAgoElement(post.timestamp)} />
+          <CommentSection parentId={post.id} comments={post.comments} timeAgo={createTimeAgoElement(post.timestamp)} />
         </CardBody>
       </Card>
     </div>

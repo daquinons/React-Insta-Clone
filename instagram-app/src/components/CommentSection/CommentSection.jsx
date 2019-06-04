@@ -3,13 +3,16 @@ import Comment from "./Comment";
 import { Input } from "reactstrap";
 import "./CommentSection.css";
 
-let CommentSection = ({ comments, timeAgo }) => {
-  const [storedComments, setStoredComments] = useState(comments);
+let CommentSection = ({ parentId, comments, timeAgo }) => {
+  const savedItem = JSON.parse(window.localStorage.getItem("comments" + parentId));
+  const toInitialize = savedItem ? savedItem : comments;
+  const [storedComments, setStoredComments] = useState(toInitialize);
   const [commentFormInput, setCommentFormInput] = useState("");
 
-  useEffect(() => {
-    setStoredComments(storedComments);
-  }, [storedComments]);
+  const saveToStorage = () => {
+    window.localStorage.setItem("comments" + parentId, JSON.stringify(storedComments));
+    console.log(JSON.parse(window.localStorage.getItem("comments" + parentId)));
+  };
 
   const addnewComment = () => {
     const idLastCommentNumber = Number(
@@ -34,33 +37,42 @@ let CommentSection = ({ comments, timeAgo }) => {
     setCommentFormInput(event.target.value);
   };
 
-  return (
-    <>
-      <div className="comment-section">
-        {storedComments.map((comment, index) => {
-          return (
-            <div key={index}>
-              <Comment comment={comment} />
-            </div>
-          );
-        })}
-      </div>
-      <div>
-        {timeAgo}
-        <hr />
-        <form onSubmit={handleSubmit.bind(this)}>
-          <Input
-            value={commentFormInput}
-            type="text"
-            name="comment"
-            className="comment-form"
-            placeholder="Add a comment..."
-            onChange={handleChange}
-          />
-        </form>
-      </div>
-    </>
-  );
+  useEffect(() => {
+    saveToStorage();
+  }, [storedComments]);
+  
+  if (storedComments) {
+    return (
+      <>
+        <div className="comment-section">
+          {storedComments.map((comment, index) => {
+            return (
+              <div key={index}>
+                <Comment comment={comment} />
+              </div>
+            );
+          })}
+        </div>
+        <div>
+          {timeAgo}
+          <hr />
+          <form onSubmit={handleSubmit}>
+            <Input
+              value={commentFormInput}
+              type="text"
+              name="comment"
+              className="comment-form"
+              placeholder="Add a comment..."
+              onChange={handleChange}
+            />
+          </form>
+        </div>
+      </>
+    );
+  } else {
+    return <div></div>
+  }
+
 };
 
 export default CommentSection;
