@@ -7,6 +7,7 @@ const LoginPage = ({ login }) => {
     <div className="login-page text-center">
       <Card className="card-login">
         <CardBody>
+          <img alt="" srcSet="./img/logo.svg" width="175px" />
           <div className="form-login">
             <input
               type="text"
