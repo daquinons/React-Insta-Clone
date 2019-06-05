@@ -1,15 +1,16 @@
 import React, { useEffect, useState } from "react";
-import "./App.css";
+import withAuthenticate from "./authentication/withAuthenticate";
 import SearchBar from "./components/SearchBar/SearchBar";
 import PostsPage from "./components/PostContainer/PostsPage";
 import { Container } from "reactstrap";
 import dummyData from "./dummy-data";
+import "./App.css";
 
 function App() {
   const [data] = useState(dummyData);
   const [dataToDisplay, setDataToDisplay] = useState(data);
   const [filteredData, setFilteredData] = useState(undefined);
-
+  const PostsPageWithAuthenticate = withAuthenticate(PostsPage);
 
   const onSearch = event => {
     filterPostsByUsername(event.target.value);
@@ -38,7 +39,7 @@ function App() {
     <div className="App">
       <Container fluid id="App-main">
         <SearchBar onSearch={onSearch} />
-        <PostsPage data={dataToDisplay} />
+        <PostsPageWithAuthenticate data={dataToDisplay} />
       </Container>
     </div>
   );
