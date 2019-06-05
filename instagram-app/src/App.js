@@ -20,7 +20,7 @@ function App() {
   const filterPostsByUsername = username => {
     if (username !== "") {
       const filteredPosts = data.filter(post =>
-        post.username.includes(username)
+        post.username.includes(username.toLowerCase())
       );
       setFilteredData(filteredPosts);
     } else {
