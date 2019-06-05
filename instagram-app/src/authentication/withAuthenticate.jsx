@@ -19,8 +19,10 @@ const withAuthenticate = Component => {
 
     isLogged() {
       if (window.localStorage.getItem("loggedIn")) {
+        this.props.callback(true);
         return true;
       } else {
+        this.props.callback(false);
         return false;
       }
     }
