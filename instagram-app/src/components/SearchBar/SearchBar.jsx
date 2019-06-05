@@ -16,7 +16,7 @@ const SearchBar = ({ onSearch, display }) => {
   return (
     <header className="App-header">
       <Row className="text-center" id="header">
-        <Col className="justify-content-center align-self-center" xs="6" sm="4">
+        <Col className="justify-content-center align-self-center" >
           <img
             className="img-fluid logo"
             src=""
@@ -24,7 +24,7 @@ const SearchBar = ({ onSearch, display }) => {
             srcSet="./img/ig_logo.png"
           />
         </Col>
-        <Col xs="6" sm="4" className="justify-content-center align-self-center">
+        <Col className="justify-content-center align-self-center">
           <label>
             <input
               onChange={onSearch}
@@ -36,7 +36,7 @@ const SearchBar = ({ onSearch, display }) => {
             />
           </label>
         </Col>
-        <Col className="justify-content-center align-self-center" xs="6" sm="4">
+        <Col className="justify-content-center align-self-center" >
           <img className="icons" src="" alt="" srcSet="./img/ig_icons.png" />
         </Col>
       </Row>
