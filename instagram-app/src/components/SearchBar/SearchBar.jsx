@@ -1,8 +1,18 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import { Row, Col } from "reactstrap";
 import "./SearchBar.css";
 
-const SearchBar = ({ onSearch }) => {
+const SearchBar = ({ onSearch, display }) => {
+  const [shouldDisplay, setShouldDisplay] = useState(display);
+  
+  useEffect(() => {
+    setShouldDisplay(display);
+  })
+
+  if (!shouldDisplay) {
+    return null;
+  }
+
   return (
     <header className="App-header">
       <Row className="text-center" id="header">

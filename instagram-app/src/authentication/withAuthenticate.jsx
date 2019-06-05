@@ -14,6 +14,7 @@ const withAuthenticate = Component => {
       window.localStorage.setItem("loggedIn", "username");
       console.log("Login");
       this.setLogin(true);
+      this.props.callback(true);
     };
   
     isLogged() {

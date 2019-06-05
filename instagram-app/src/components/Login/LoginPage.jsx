@@ -13,14 +13,14 @@ const LoginPage = ({ login }) => {
               name="username"
               id="username-input"
               className="form-input"
-              value="user@email.com"
+              defaultValue="user@email.com"
             />
             <input
               type="password"
               name="password"
               id="password-input"
               className="form-input"
-              value="12345678"
+              defaultValue="12345678"
             />
             <Button color="primary" className="login-button" onClick={login}>Login</Button>{' '}
           </div>

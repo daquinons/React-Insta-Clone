@@ -10,6 +10,7 @@ function App() {
   const [data] = useState(dummyData);
   const [dataToDisplay, setDataToDisplay] = useState(data);
   const [filteredData, setFilteredData] = useState(undefined);
+  const [loggedIn, setLoggedIn] = useState(false);
   const PostsPageWithAuthenticate = withAuthenticate(PostsPage);
 
   const onSearch = event => {
@@ -27,6 +28,11 @@ function App() {
     }
   };
 
+  const loggedInCallback = (state) => {
+    console.log("Callback!", state);
+    setLoggedIn(state);
+  }
+
   useEffect(() => {
     if (filteredData) {
       setDataToDisplay(filteredData);
@@ -38,8 +44,8 @@ function App() {
   return (
     <div className="App">
       <Container fluid id="App-main">
-        <SearchBar onSearch={onSearch} />
-        <PostsPageWithAuthenticate data={dataToDisplay} />
+        <SearchBar onSearch={onSearch} display={loggedIn} />
+        <PostsPageWithAuthenticate data={dataToDisplay} callback={loggedInCallback} />
       </Container>
     </div>
   );
