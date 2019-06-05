@@ -37,9 +37,7 @@ function App() {
   return (
     <div className="App">
       <Container fluid id="App-main">
-        <header className="App-header">
-          <SearchBar onSearch={onSearch} />
-        </header>
+        <SearchBar onSearch={onSearch} />
         <PostsPage data={dataToDisplay} />
       </Container>
     </div>
