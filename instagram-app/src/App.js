@@ -28,10 +28,10 @@ function App() {
     }
   };
 
-  const loggedInCallback = (state) => {
+  const loggedInCallback = state => {
     console.log("Callback!", state);
     setLoggedIn(state);
-  }
+  };
 
   useEffect(() => {
     if (filteredData) {
@@ -45,7 +45,10 @@ function App() {
     <div className="App">
       <Container fluid id="App-main">
         <SearchBar onSearch={onSearch} display={loggedIn} />
-        <PostsPageWithAuthenticate data={dataToDisplay} callback={loggedInCallback} />
+        <PostsPageWithAuthenticate
+          data={dataToDisplay}
+          callback={loggedInCallback}
+        />
       </Container>
     </div>
   );

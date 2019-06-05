@@ -15,15 +15,15 @@ const withAuthenticate = Component => {
       console.log("Login");
       this.setLogin(true);
       this.props.callback(true);
-    };
-  
+    }
+
     isLogged() {
       if (window.localStorage.getItem("loggedIn")) {
         return true;
       } else {
         return false;
       }
-    };
+    }
 
     setLogin(state) {
       this.setState({ auth: state });

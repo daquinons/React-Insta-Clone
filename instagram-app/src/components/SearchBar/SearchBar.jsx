@@ -1,13 +1,13 @@
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import { Row, Col } from "reactstrap";
 import "./SearchBar.css";
 
 const SearchBar = ({ onSearch, display }) => {
   const [shouldDisplay, setShouldDisplay] = useState(display);
-  
+
   useEffect(() => {
     setShouldDisplay(display);
-  })
+  }, [display]);
 
   if (!shouldDisplay) {
     return null;

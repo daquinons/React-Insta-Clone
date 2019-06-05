@@ -22,7 +22,9 @@ const LoginPage = ({ login }) => {
               className="form-input"
               defaultValue="12345678"
             />
-            <Button color="primary" className="login-button" onClick={login}>Login</Button>{' '}
+            <Button color="primary" className="login-button" onClick={login}>
+              Login
+            </Button>{" "}
           </div>
         </CardBody>
       </Card>
