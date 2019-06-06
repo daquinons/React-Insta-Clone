@@ -7,11 +7,19 @@ const StyledHeader = styled.div`
   border-bottom: 1px solid rgba(0, 0, 0, 0.0975);
   padding-top: 0.7rem;
   margin-bottom: 2rem;
+  margin-left: -15px;
+  margin-right: -15px;
   height: 77px;
 
   @media only screen and (max-width: 600px) {
     height: 130px;
   }
+
+  .row {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
   .logo {
     max-height: 55px;
   }
