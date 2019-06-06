@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Comment from "./Comment";
 import { Input } from "reactstrap";
-import "./CommentSection.css";
 
 let CommentSection = ({ parentId, comments, timeAgo }) => {
   const savedItem = JSON.parse(
