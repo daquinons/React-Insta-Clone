@@ -18,14 +18,6 @@ const StyledCard = styled.div`
     margin: 0 !important;
   }
 
-  .thumbnail-image {
-    height: 32px;
-    width: 32px;
-    border-radius: 50%;
-    -webkit-box-direction: normal;
-    border: 1px solid rgb(0, 53, 105);
-  }
-
   .post-icon {
     margin-right: 1rem;
     width: 1.75rem;
@@ -46,6 +38,14 @@ const StyledCard = styled.div`
     font-weight: 600;
     color: #262626;
   }
+`;
+
+const StyledThumbnail = styled.img`
+  height: 32px;
+  width: 32px;
+  border-radius: 50%;
+  -webkit-box-direction: normal;
+  border: 1px solid rgb(0, 53, 105);
 `;
 
 const PostContainer = ({ post }) => {
@@ -76,11 +76,7 @@ const PostContainer = ({ post }) => {
       <Card>
         <CardBody>
           <CardTitle className="blue-bold">
-            <img
-              className="thumbnail-image"
-              alt=""
-              srcSet={post.thumbnailUrl}
-            />
+            <StyledThumbnail srcSet={post.thumbnailUrl} />
             &nbsp; {post.username}
           </CardTitle>
         </CardBody>
