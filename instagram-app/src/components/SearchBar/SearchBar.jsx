@@ -24,16 +24,16 @@ const StyledHeader = styled.div`
     max-height: 55px;
   }
 
-  #search-field {
-    background-color: #fafafa;
-    border-radius: 3px;
-    border: solid 1px #dbdbdb;
-    margin-top: 0.75rem;
-  }
-
   .icons {
     height: 32px;
   }
+`;
+
+const StyledInputField = styled.input`
+  background-color: #fafafa;
+  border-radius: 3px;
+  border: solid 1px #dbdbdb;
+  margin-top: 0.75rem;
 `;
 
 const SearchBar = ({ onSearch, display }) => {
@@ -60,12 +60,11 @@ const SearchBar = ({ onSearch, display }) => {
         </Col>
         <Col className="justify-content-center align-self-center">
           <label>
-            <input
+            <StyledInputField
               onChange={onSearch}
               type="text"
               className="text-center"
               name="search"
-              id="search-field"
               placeholder="Search"
             />
           </label>
