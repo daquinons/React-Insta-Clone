@@ -16,7 +16,6 @@ let CommentSection = ({ parentId, comments, timeAgo }) => {
       "comments" + parentId,
       JSON.stringify(storedComments)
     );
-    console.log(JSON.parse(window.localStorage.getItem("comments" + parentId)));
   };
 
   const addnewComment = () => {
@@ -44,7 +43,7 @@ let CommentSection = ({ parentId, comments, timeAgo }) => {
 
   useEffect(() => {
     saveToStorage();
-  }, [storedComments]);
+  });
 
   if (storedComments) {
     return (
