@@ -1,19 +1,13 @@
-import React from "react";
-import {
-  Card,
-  CardImg,
-  CardText,
-  CardBody,
-  CardTitle,
-  Input
-} from "reactstrap";
-import pt from 'prop-types';
+import React, { useState } from "react";
+import { Card, CardImg, CardText, CardBody, CardTitle } from "reactstrap";
+import pt from "prop-types";
 import moment from "moment";
-import PostIcons from './PostIcons';
+import PostIcons from "./PostIcons";
 import CommentSection from "../CommentSection/CommentSection";
 import "./PostContainer.css";
 
 const PostContainer = ({ post }) => {
+  const [likes, setLikes] = useState(post.likes);
   const getDiffDateInWeeks = timestamp => {
     const now = moment(new Date());
     const toCompare = moment(timestamp, "MMMM Do YYYY, hh:mm:ss a");
@@ -21,6 +15,18 @@ const PostContainer = ({ post }) => {
     const diffDateInWeeks = Math.round(duration.asWeeks());
 
     return diffDateInWeeks;
+  };
+
+  const createTimeAgoElement = timestamp => {
+    return (
+      <CardText className="date">
+        {getDiffDateInWeeks(timestamp)} WEEKS AGO
+      </CardText>
+    );
+  };
+
+  const likePost = () => {
+    setLikes(likes + 1);
   };
 
   return (
@@ -38,18 +44,12 @@ const PostContainer = ({ post }) => {
         </CardBody>
         <CardImg top width="100%" src={post.imageUrl} />
         <CardBody>
-          <PostIcons />
-          <CardText className="blue-bold">{post.likes} likes</CardText>
-          <CommentSection comments={post.comments} />
-          <CardText className="date">
-            {getDiffDateInWeeks(post.timestamp)} WEEKS AGO
-          </CardText>
-          <hr />
-          <Input
-            type="text"
-            name="comment"
-            className="comment-form"
-            placeholder="Add a comment..."
+          <PostIcons likeHandler={likePost} />
+          <CardText className="blue-bold">{likes} likes</CardText>
+          <CommentSection
+            parentId={post.id}
+            comments={post.comments}
+            timeAgo={createTimeAgoElement(post.timestamp)}
           />
         </CardBody>
       </Card>
@@ -65,8 +65,8 @@ PostContainer.propTypes = {
     imageUrl: pt.string.isRequired,
     likes: pt.number.isRequired,
     timestamp: pt.string.isRequired,
-    comments: pt.arrayOf(pt.object).isRequired,
+    comments: pt.arrayOf(pt.object).isRequired
   }).isRequired
-}
+};
 
 export default PostContainer;
