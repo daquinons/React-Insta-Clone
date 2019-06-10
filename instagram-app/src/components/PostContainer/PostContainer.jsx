@@ -2,9 +2,51 @@ import React, { useState } from "react";
 import { Card, CardImg, CardText, CardBody, CardTitle } from "reactstrap";
 import pt from "prop-types";
 import moment from "moment";
+import styled from "styled-components";
 import PostIcons from "./PostIcons";
 import CommentSection from "../CommentSection/CommentSection";
-import "./PostContainer.css";
+
+const StyledCard = styled.div`
+  max-width: 614px;
+  margin-bottom: 2rem;
+
+  .card {
+    border-radius: 3px;
+  }
+
+  .card-title {
+    margin: 0 !important;
+  }
+
+  .post-icon {
+    margin-right: 1rem;
+    width: 1.75rem;
+  }
+
+  .date {
+    color: #999;
+    font-size: 12px;
+    letter-spacing: 0.2px;
+    text-transform: uppercase;
+  }
+
+  .comment-form {
+    border-width: 0 !important;
+  }
+
+  .blue-bold {
+    font-weight: 600;
+    color: #262626;
+  }
+`;
+
+const StyledThumbnail = styled.img`
+  height: 32px;
+  width: 32px;
+  border-radius: 50%;
+  -webkit-box-direction: normal;
+  border: 1px solid rgb(0, 53, 105);
+`;
 
 const PostContainer = ({ post }) => {
   const [likes, setLikes] = useState(post.likes);
@@ -30,15 +72,11 @@ const PostContainer = ({ post }) => {
   };
 
   return (
-    <div className="card-post">
+    <StyledCard>
       <Card>
         <CardBody>
           <CardTitle className="blue-bold">
-            <img
-              className="thumbnail-image"
-              alt=""
-              srcSet={post.thumbnailUrl}
-            />
+            <StyledThumbnail srcSet={post.thumbnailUrl} />
             &nbsp; {post.username}
           </CardTitle>
         </CardBody>
@@ -53,7 +91,7 @@ const PostContainer = ({ post }) => {
           />
         </CardBody>
       </Card>
-    </div>
+    </StyledCard>
   );
 };
 
