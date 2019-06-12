@@ -10,6 +10,7 @@
 ## How to run
 
 `$ cd instagram-app`
+
 `$ npm install && npm start`
 
 ### Live Demo
